@@ -1,0 +1,57 @@
+.calendar-container {
+  width: 100%;
+  max-width: 720px;
+  margin: auto;
+  overflow: hidden;
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-wrapper {
+  transform: scale(1.0);
+  transform-origin: top center;
+}
+
+.fc {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.95rem;
+}
+
+.fc-toolbar-title {
+  font-size: 1.3rem;
+}
+
+.fc-daygrid-day-number {
+  font-size: 0.85rem;
+}
+
+.calendar-dot {
+  width: 5px;
+  height: 5px;
+  background-color: #007bff;
+  border-radius: 50%;
+  margin: auto;
+  cursor: pointer;
+}
+
+
+.calendar-tooltip {
+  position: absolute;
+  z-index: 1000;
+  background: #fff;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.2s ease;
+  pointer-events: auto; /* ensure tooltip can be hovered */
+}
+
+.calendar-tooltip img {
+  max-width: 200x;
+  max-height: 200px;
+  display: block;
+}

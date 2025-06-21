@@ -19,9 +19,13 @@ const CalendarView = () => {
             title: 'APOD',
             date: today,
             backgroundColor: '#007BFF',
-            extendedProps: { img: res.data.url },
+            extendedProps: { 
+                img: res.data.url,
+                copyright: res.data.copyright 
+            },
           },
         ]);
+        console.log(res);
       } catch (err) {
         console.error('Failed to load APOD:', err);
       }
@@ -50,9 +54,20 @@ const CalendarView = () => {
     setHideTimeout(timeout);
   };
 
-  const renderEventContent = () => (
-    <div className="calendar-dot" />
-  );
+  const renderEventContent = (eventInfo) => {
+    console.log(eventInfo);
+    const copyright = eventInfo.event.extendedProps.copyright;
+    console.log(copyright);
+    return (
+        <div className="calendar-dot-label-wrapper">
+            <div className="calendar-dot">
+                <div className="calendar-label">
+                    {copyright || 'NASA'}
+                </div>
+            </div>
+        </div>
+    )
+ };
 
   const onEventDidMount = (info) => {
     const imgUrl = info.event.extendedProps.img;

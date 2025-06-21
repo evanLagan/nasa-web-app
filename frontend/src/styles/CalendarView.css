@@ -28,6 +28,7 @@
   font-size: 0.85rem;
 }
 
+/*
 .calendar-dot {
   width: 5px;
   height: 5px;
@@ -35,6 +36,29 @@
   border-radius: 50%;
   margin: auto;
   cursor: pointer;
+}
+*/
+
+.calendar-dot-label-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.calendar-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-bottom: 2px;
+}
+
+.calendar-label {
+  font-size: 0.65rem;
+  color: white;
+  margin-left: 10px;
+  max-width: 50px;
+  word-wrap: break-word;
 }
 
 
@@ -47,7 +71,7 @@
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   transition: opacity 0.2s ease;
-  pointer-events: auto; /* ensure tooltip can be hovered */
+  pointer-events: auto; 
 }
 
 .calendar-tooltip img {

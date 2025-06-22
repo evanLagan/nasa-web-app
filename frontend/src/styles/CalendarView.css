@@ -8,6 +8,7 @@
   border-radius: 12px;
   background-color: #f9f9f9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
 }
 
 .calendar-wrapper {
@@ -28,27 +29,26 @@
   font-size: 0.85rem;
 }
 
-/*
-.calendar-dot {
-  width: 5px;
-  height: 5px;
-  background-color: #007bff;
-  border-radius: 50%;
-  margin: auto;
-  cursor: pointer;
+.fc-event {
+  white-space: nowrap;      /* ❗ keep text on one line */
+  overflow: hidden;         /* ❗ hide overflow */
+  text-overflow: ellipsis;  /* ✅ show "..." when too long */
+  color: orange;
 }
-*/
+
 
 .calendar-dot-label-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  max-width: 2px;
 }
 
 .calendar-dot {
   width: 12px;
   height: 12px;
+  background-color: orange;
   border-radius: 50%;
   margin-bottom: 2px;
 }
@@ -56,8 +56,6 @@
 .calendar-label {
   font-size: 0.65rem;
   color: white;
-  margin-left: 10px;
-  max-width: 50px;
   word-wrap: break-word;
 }
 

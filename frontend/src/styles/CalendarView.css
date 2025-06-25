@@ -2,7 +2,6 @@
   width: 100%;
   max-width: 720px;
   margin: auto;
-  overflow: hidden;
   margin: 2rem auto;
   padding: 1rem;
   border-radius: 12px;
@@ -14,6 +13,12 @@
 .calendar-wrapper {
   transform: scale(1.0);
   transform-origin: top center;
+  background-image: url('/public/stars_background.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: 2rem;
 }
 
 .fc {

@@ -1,15 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import axios from 'axios';
 import '../styles/CalendarView.css';
 
+// Global cache for persistance
+const apodCache = {};
+
 const CalendarView = () => {
+  const navigate = useNavigate();
   const [events, setEvents] = useState([]);
   const [hoveredEvent, setHoveredEvent] = useState(null);
   const [hideTimeout, setHideTimeout] = useState(null);
   const [calendarRange, setCalendarRange] = useState({ start: null, end: null });
-  const apodCache = useRef({});
+  //const apodCache = useRef({});
+
 
   // Fetch APODs for the current visible month range
   useEffect(() => {
@@ -20,9 +26,9 @@ const CalendarView = () => {
       const startDate = new Date(calendarRange.start);
       const key = `${startDate.getFullYear()}-${String(startDate.getMonth() + 1).padStart(2, '0')}`;
 
-      if (apodCache.current[key]) {
+      if (apodCache[key]) {
         console.log("Retreiving from cache");
-        setEvents(apodCache.current[key]);
+        setEvents(apodCache[key]);
         return;
       }
 
@@ -41,7 +47,7 @@ const CalendarView = () => {
           },
         }));
 
-        apodCache.current[key] = events;
+        apodCache[key] = events;
         setEvents(events);
       } catch (err) {
         console.error('Failed to load APODs:', err);
@@ -78,7 +84,9 @@ const CalendarView = () => {
   };
 
   const handleEventClick = (info) => {
-    alert(`Clicked ${info.event.title}`);
+    //alert(`Clicked ${info.event.title}`);
+    const date = info.event.startStr;
+    navigate(`/apod/${date}`);
   };
 
   const handleMouseEnter = (el, imgUrl) => {
@@ -132,7 +140,7 @@ const CalendarView = () => {
         <div
           className="calendar-tooltip"
           style={{
-            top: hoveredEvent.top - 305,
+            top: hoveredEvent.top - 280,
             left: hoveredEvent.left - 80,
           }}
           onMouseEnter={() => hideTimeout && clearTimeout(hideTimeout)}

@@ -1,0 +1,54 @@
+.apod-container {
+    background-color: rgb(253, 254, 254);
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.apod-detail-wrapper {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: inherit;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.apod-image {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+.apod-explanation {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.loading-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: vh;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.back-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+

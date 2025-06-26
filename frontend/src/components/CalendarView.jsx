@@ -5,18 +5,20 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import axios from 'axios';
 import '../styles/CalendarView.css';
 
-// Global cache for persistance
+const apiURL = process.env.REACT_APP_API_URL;
+
+// Global cache for persistance of APOD content within the caledar grid
 const apodCache = {};
 
 const CalendarView = () => {
+ 
   const navigate = useNavigate();
   const [events, setEvents] = useState([]);
   const [hoveredEvent, setHoveredEvent] = useState(null);
   const [hideTimeout, setHideTimeout] = useState(null);
   const [calendarRange, setCalendarRange] = useState({ start: null, end: null });
-  //const apodCache = useRef({});
 
-
+ 
   // Fetch APODs for the current visible month range
   useEffect(() => {
     const loadAPODsForMonth = async () => {
@@ -34,7 +36,7 @@ const CalendarView = () => {
 
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/apod-range?start_date=${calendarRange.start}&end_date=${calendarRange.end}`
+          `${apiURL}/api/apod-range?start_date=${calendarRange.start}&end_date=${calendarRange.end}`
         );
 
         const events = res.data.map((entry) => ({
@@ -65,11 +67,6 @@ const CalendarView = () => {
     const end = new Date(range.endStr);
     const today = new Date();
 
-    // Computing the cache key
-    const year = start.getFullYear();
-    const month = String(start.getMonth() + 1).padStart(2, 0);
-    const cacheKey = `${year}-${month}`;
-
     // Skip if viewing a future month
     if (start > today) {
       setCalendarRange({ start: null, end: null });
@@ -84,7 +81,6 @@ const CalendarView = () => {
   };
 
   const handleEventClick = (info) => {
-    //alert(`Clicked ${info.event.title}`);
     const date = info.event.startStr;
     navigate(`/apod/${date}`);
   };
@@ -134,6 +130,10 @@ const CalendarView = () => {
           eventDidMount={onEventDidMount}
           datesSet={handleDatesSet}
         />
+      </div>
+      <div className="text-block">
+      <h2>Content may take a momment to load....</h2>
+      <h3>Explore all Astronomy Pictures of the Day in a calendar view. Click on any date to see more details.</h3>
       </div>
 
       {hoveredEvent && (

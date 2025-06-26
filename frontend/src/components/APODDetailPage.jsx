@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/APODDetailPage.css';
 
+const apiURL = process.env.REACT_APP_API_URL;
+
 const APODDetailPage = () => {
     const { date } = useParams();
     const [data, setData] = useState(null);
@@ -17,7 +19,7 @@ const APODDetailPage = () => {
     useEffect(() => {
         const loadAPOD = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/apod?date=${date}`);
+                const res = await axios.get(`${apiURL}/api/apod?date=${date}`);
                 setData(res.data);
             } catch (err) {
                 console.error('Failed to fetch APOD details:', err);

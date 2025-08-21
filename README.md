@@ -29,23 +29,32 @@ git clone https://github.com/your-username/nasa-space-calendar.git
 cd nasa-space-calendar
 
 ### 2. Backend Setup
+```bash
 cd backend
 npm install
-
+```
 Create a .env file with the following content:
--> NASA_API_KEY=your_nasa_api_key_here
-
-npm start (By default, this should run on http://localhost:5000)
-
+```bash
+NASA_API_KEY=your_nasa_api_key_here
+```
+Run
+```bash
+npm start 
+```
 ### 3. Frontend Setup
+```bash
 cd ../frontend
 npm install
+```
 
 Create a .env file with the following content:
--> REACT_APP_API_URL=http://localhost:5000
-
-npm start (Visit the app in your browser at: http://localhost:3000)
-
+```bash
+REACT_APP_API_URL=http://localhost:5000
+```
+Run
+```
+npm start 
+```
 
 ## Future Work
 
